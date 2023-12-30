@@ -1,6 +1,17 @@
+/* eslint-disable react-refresh/only-export-components */
+import {lazy} from 'react';
 import {createBrowserRouter} from 'react-router-dom';
-import {Events, Home, Calendar, Layout} from './Pages';
-import Error from './Components/Templates/Error/Error';
+import withSuspense from './hoc/withSuspense';
+
+const Layout = withSuspense (lazy (() => import ('./Pages/Layout/Layout')));
+const Home = withSuspense (lazy (() => import ('./Pages/Home/Home')));
+const Events = withSuspense (lazy (() => import ('./Pages/Events/Events')));
+const Calendar = withSuspense (
+  lazy (() => import ('./Pages/Calendar/Calendar'))
+);
+const Error = withSuspense (
+  lazy (() => import ('./Components/Templates/Error/Error'))
+);
 
 const router = createBrowserRouter ([
   {
