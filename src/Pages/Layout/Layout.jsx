@@ -1,12 +1,13 @@
 import {Fragment} from 'react';
-import {Outlet} from 'react-router-dom';
+import {Outlet, useNavigation} from 'react-router-dom';
 import {Navbar} from '../../Components';
 
 const Layout = () => {
+  const navigation = useNavigation ();
   return (
     <Fragment>
       <Navbar />
-      <Outlet />
+      {navigation.state === 'loading' ? <div>Loading Layout</div> : <Outlet />}
     </Fragment>
   );
 };
